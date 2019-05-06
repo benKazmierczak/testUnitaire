@@ -12,7 +12,6 @@ class Exchange
 {
     private $receiver;
     private $product;
-    private $owner;
     private $firstDate;
     private $endDate;
 
