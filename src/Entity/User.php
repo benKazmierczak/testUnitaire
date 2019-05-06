@@ -38,10 +38,9 @@ class User {
     }
 
     /**
-     * @param mixed $firstname
-     * @return User
+     * @param string $firstname
      */
-    public function setFirstname(String $firstname)
+    public function setFirstname(string $firstname)
     {
         $this->firstname = $firstname;
     }
@@ -55,10 +54,9 @@ class User {
     }
 
     /**
-     * @param mixed $email
-     * @return User
+     * @param string $email
      */
-    public function setEmail(String $email)
+    public function setEmail(string $email)
     {
         $this->email = $email;
     }
@@ -72,10 +70,9 @@ class User {
     }
 
     /**
-     * @param mixed $lastname
-     * @return User
+     * @param string $lastname
      */
-    public function setLastname(String $lastname)
+    public function setLastname(string $lastname)
     {
         $this->lastname = $lastname;
     }
@@ -89,8 +86,7 @@ class User {
     }
 
     /**
-     * @param mixed $age
-     * @return User
+     * @param int $age
      */
     public function setAge(int $age)
     {
