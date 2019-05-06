@@ -63,7 +63,7 @@ class Exchange
     }
 
     /**
-     * @param $firstDate
+     * @param $startDate
      */
     public function setStartDate($startDate){
         $this->startDate = $startDate;

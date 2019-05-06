@@ -25,8 +25,8 @@ class ExchangeTest extends TestCase {
         $this->assertEquals(true, $this->product->isValid());
     }
 
-    public function testStartDateIsLowerToCurrentDate() {
-        $this->exchange->setName("");
-        $this->assertEquals(false, $this->product->isValid());
+    public function testStartDateIsUpperToCurrentDate() {
+        $this->exchange->setStarDate('10/05/2019');
+        $this->assertEquals(false, $this->exchange->save());
     }
 }
