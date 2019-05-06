@@ -37,11 +37,9 @@ class Exchange
 
     /**
      * @param $receiver
-     * @return $this
      */
     public function setReceiver($receiver){
         $this->receiver = $receiver;
-        return $this;
     }
 
     /**
@@ -53,11 +51,9 @@ class Exchange
 
     /**
      * @param $product
-     * @return $this
      */
     public function setProduct($product){
         $this->product = $product;
-        return $this;
     }
 
     /**
@@ -69,11 +65,9 @@ class Exchange
 
     /**
      * @param $firstDate
-     * @return $this
      */
     public function setFirstDate($firstDate){
         $this->firstDate = $firstDate;
-        return $this;
     }
 
     /**
@@ -85,10 +79,8 @@ class Exchange
 
     /**
      * @param $endDate
-     * @return $this
      */
     public function setEndDate($endDate){
         $this->endDate = $endDate;
-        return $this;
     }
 }
