@@ -23,12 +23,12 @@ class ProductTest extends TestCase
         $this->assertEquals(true, $this->product->isValid());
     }
 
-    public function testInvalid() {
+    public function testEmptyStringName() {
         $this->product->setName("");
         $this->assertEquals(false, $this->product->isValid());
     }
 
-    public function testInvalidOwner() {
+    public function testWithTooMuchYoungerOwner() {
         $this->product->getOwner()->setAge(1);
         $this->assertEquals(false, $this->product->isValid());
     }
