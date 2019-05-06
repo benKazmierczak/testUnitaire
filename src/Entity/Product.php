@@ -4,35 +4,42 @@ namespace App\Entity;
 
 class Product
 {
+
+    /**
+     * @var string
+     */
     private $name;
-    private $user;
+
+    /**
+     * @var User
+     */
+    private $owner;
 
     public function __construct(string $name, User $user)
     {
         $this->setName($name);
-        $this->setUser($user);
+        $this->setOwner($user);
     }
 
     public function isValid() {
-        return !empty($this->getName()) && $this->user->isValid();
+        return !empty($this->getName()) && $this->owner->isValid();
     }
 
     /**
      * @return mixed
      */
-    public function getUser()
+    public function getOwner()
     {
-        return $this->user;
+        return $this->owner;
     }
 
     /**
-     * @param mixed $user
+     * @param User $user
      * @return Product
      */
-    public function setUser(User $user)
+    public function setOwner(User $user)
     {
-        $this->user = $user;
-        return $this;
+        $this->owner = $user;
     }
 
     /**
@@ -44,12 +51,11 @@ class Product
     }
 
     /**
-     * @param mixed $name
+     * @param string $name
      * @return Product
      */
-    public function setName($name)
+    public function setName(string $name)
     {
         $this->name = $name;
-        return $this;
     }
 }

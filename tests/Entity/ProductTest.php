@@ -7,19 +7,21 @@ use App\Entity\Product;
 
 class ProductTest extends TestCase
 {
+    /**
+     * @var Product
+     */
     protected $product;
 
     protected function setUp(): void
     {
-        $user = new User("benjamin", "kazmierczak", "test@test.fr", 23);
+        $owner = new User("Franck", "Dupont", "test@test.fr", 23);
 
-        $this->product = new Product("object", $user);
+        $this->product = new Product("objectName", $owner);
     }
 
     public function testIsValid() {
         $this->assertEquals(true, $this->product->isValid());
     }
-
 
     public function testInvalid() {
         $this->product->setName("");
@@ -27,7 +29,7 @@ class ProductTest extends TestCase
     }
 
     public function testInvalidOwner() {
-        $this->product->getUser()->setAge(1);
+        $this->product->getOwner()->setAge(1);
         $this->assertEquals(false, $this->product->isValid());
     }
 
