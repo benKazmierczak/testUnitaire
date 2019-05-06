@@ -11,6 +11,6 @@ use App\Entity\User;
 use App\Entity\Product;
 use App\Entity\Exchange;
 
-/*class ExchangeTest extends TestCase
+class ExchangeTest extends TestCase {
 
-}*/
+}

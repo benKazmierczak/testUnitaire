@@ -44,7 +44,6 @@ class User {
     public function setFirstname(String $firstname)
     {
         $this->firstname = $firstname;
-        return $this;
     }
 
     /**
@@ -62,7 +61,6 @@ class User {
     public function setEmail(String $email)
     {
         $this->email = $email;
-        return $this;
     }
 
     /**
@@ -80,7 +78,6 @@ class User {
     public function setLastname(String $lastname)
     {
         $this->lastname = $lastname;
-        return $this;
     }
 
     /**
@@ -98,7 +95,6 @@ class User {
     public function setAge(int $age)
     {
         $this->age = $age;
-        return $this;
     }
 
 }
