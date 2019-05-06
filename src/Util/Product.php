@@ -5,6 +5,7 @@
  * Date: 2019-04-26
  * Time: 15:24
  */
+namespace App\Util;
 
 class Product {
 
