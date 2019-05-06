@@ -24,7 +24,7 @@ class Exchange
     }
 
     public function save(){
-
+        return $this->product->isValid() && $this->receiver->isValid() && $this->firstDate > date("d-m-Y");
     }
 
     /**
