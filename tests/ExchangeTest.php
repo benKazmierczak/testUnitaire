@@ -21,5 +21,12 @@ class ExchangeTest extends TestCase {
         $this->product = new Product("objectName", $owner);
     }
 
-    public function testOwnerIsValid()
+    public function testIsValid() {
+        $this->assertEquals(true, $this->product->isValid());
+    }
+
+    public function testStartDateIsLowerToCurrentDate() {
+        $this->exchange->setName("");
+        $this->assertEquals(false, $this->product->isValid());
+    }
 }

@@ -15,16 +15,16 @@ class Exchange
     private $startDate;
     private $endDate;
 
-    public function __construct(User $receiver, Product $product, date $startDate, date $endDate)
+    public function __construct(User $receiver, Product $product, \DateTime $startDate, \DateTime $endDate)
     {
         $this->setReceiver($receiver);
         $this->setProduct($product);
-        $this->setFirstDate($startDate);
+        $this->setStartDate($startDate);
         $this->setEndDate($endDate);
     }
 
     public function save(){
-        return $this->product->isValid() && $this->receiver->isValid() && $this->startDate > date("d-m-Y") && $this->endDate > $this->startDate;
+        return $this->product->isValid() && $this->receiver->isValid() && $this->startDate > new \DateTime('NOW')  && $this->endDate > $this->startDate;
     }
 
     /**
@@ -58,15 +58,15 @@ class Exchange
     /**
      * @return mixed
      */
-    public function getFirstDate(){
-        return $this->firstDate;
+    public function getStartDate(){
+        return $this->startDate;
     }
 
     /**
      * @param $firstDate
      */
-    public function setFirstDate($firstDate){
-        $this->firstDate = $firstDate;
+    public function setStartDate($startDate){
+        $this->startDate = $startDate;
     }
 
     /**
