@@ -12,19 +12,19 @@ class Exchange
 {
     private $receiver;
     private $product;
-    private $firstDate;
+    private $startDate;
     private $endDate;
 
-    public function __construct(User $receiver, Product $product, date $firstDate, date $endDate)
+    public function __construct(User $receiver, Product $product, date $startDate, date $endDate)
     {
         $this->setReceiver($receiver);
         $this->setProduct($product);
-        $this->setFirstDate($firstDate);
+        $this->setFirstDate($startDate);
         $this->setEndDate($endDate);
     }
 
     public function save(){
-        return $this->product->isValid() && $this->receiver->isValid() && $this->firstDate > date("d-m-Y");
+        return $this->product->isValid() && $this->receiver->isValid() && $this->startDate > date("d-m-Y") && $this->endDate > $this->startDate;
     }
 
     /**

@@ -12,5 +12,14 @@ use App\Entity\Product;
 use App\Entity\Exchange;
 
 class ExchangeTest extends TestCase {
+    protected $exchange;
 
+    protected function setUp(): void
+    {
+        $owner = new User("Franck", "Dupont", "test@test.fr", 23);
+
+        $this->product = new Product("objectName", $owner);
+    }
+
+    public function testOwnerIsValid()
 }
