@@ -13,20 +13,60 @@ use App\Entity\Exchange;
 
 class ExchangeTest extends TestCase {
     protected $exchange;
+    private $majorAge = 18;
+    //private $receiver;
+    //private $product;
 
     protected function setUp(): void
     {
-        $owner = new User("Franck", "Dupont", "test@test.fr", 23);
+        $this->receiver = new User("John", "Doe", "toto@to.fr", 25);
 
+        $owner = new User("Franck", "Dupont", "test@test.fr", 23);
         $this->product = new Product("objectName", $owner);
+
+        $startDate = new DateTime();
+        $startDate->setDate(2019, 7, 10);
+
+        $endDate = new DateTime();
+        $endDate->setDate(2019, 11, 10);
+
+        $this->exchange = new Exchange($this->receiver, $this->product, $startDate, $endDate);
     }
 
-    public function testIsValid() {
-        $this->assertEquals(true, $this->product->isValid());
+    public function testSave() {
+        $this->assertEquals(true, $this->exchange->save());
     }
 
     public function testStartDateIsUpperToCurrentDate() {
-        $this->exchange->setStarDate('10/05/2019');
-        $this->assertEquals(false, $this->exchange->save());
+        $startDate = new DateTime();
+        $startDate->setDate(2019, 5, 10);
+
+        $this->exchange->setStartDate($startDate);
+        $this->assertEquals(true,  $this->exchange->getStartDate() > new \DateTime('NOW'));
+    }
+
+    public function testEndDateIsUpperToStartDate(){
+
+        $startDate = new DateTime();
+        $startDate->setDate(2019, 5, 10);
+
+        $endDate = new DateTime();
+        $endDate->setDate(2020, 5, 10);
+
+        $this->exchange->setStartDate($startDate);
+        $this->exchange->setEndDate($endDate);
+
+        $this->assertEquals(true, $this->exchange->getStartDate() < $this->exchange->getEndDate());
+    }
+
+    public function testProductHadOwner(){
+        $receiver = new User("Franck", "Dupont", "test@test.fr", 23);
+        $this->exchange->setReceiver($receiver);
+        $this->assertInstanceOf('App\Entity\User', $this->exchange->getReceiver());
+    }
+
+    public function testIsReceiverIsMajor(){
+        $this->exchange->getReceiver()->setAge(25);
+        $this->assertEquals(true, $this->exchange->getReceiver()->getAge() >= $this->majorAge);
     }
 }

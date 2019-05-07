@@ -14,6 +14,7 @@ class ProductTest extends TestCase
 
     protected function setUp(): void
     {
+        $date =  new \DateTime('NOW');
         $owner = new User("Franck", "Dupont", "test@test.fr", 23);
 
         $this->product = new Product("objectName", $owner);
@@ -33,4 +34,9 @@ class ProductTest extends TestCase
         $this->assertEquals(false, $this->product->isValid());
     }
 
+    public function testProductHadOwner(){
+        $owner = new User("Franck", "Dupont", "test@test.fr", 23);
+        $this->product->setOwner($owner);
+        $this->assertInstanceOf('App\Entity\User', $this->product->getOwner());
+    }
 }
