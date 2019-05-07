@@ -2,6 +2,9 @@
 
 namespace App\Entity;
 
+use App\Entity\User;
+use PHPUnit\Framework\TestCase;
+
 class EmailSender
 {
 
@@ -10,9 +13,12 @@ class EmailSender
 		//
 	}
 
-	public function sendEmail($emailReceiver, $messageContent)
+	public function sendEmail(User $emailReceiver, string $messageContent = "Test"): bool
 	{
-		return true;
+	    if($emailReceiver instanceof User && $emailReceiver->isValidEmail() && $emailReceiver->getAge() < 13){
+	        return true;
+        }
+        return false;
 	}
 
 }

@@ -21,10 +21,15 @@ class User {
     }
 
     public function isValid() {
-        return filter_var($this->getEmail(), FILTER_VALIDATE_EMAIL)
-                && !empty($this->getFirstname())
-                && !empty($this->getLastname())
+        return $this->isValidEmail()
                 && $this->getAge() >= 13;
+    }
+
+    public function isValidEmail()
+    {
+        return filter_var($this->getEmail(), FILTER_VALIDATE_EMAIL)
+            && !empty($this->getFirstname())
+            && !empty($this->getLastname());
     }
 
     /**

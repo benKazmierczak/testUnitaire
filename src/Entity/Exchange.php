@@ -8,11 +8,32 @@
 
 namespace App\Entity;
 
+use PHPUnit\Framework\TestCase;
+use App\Entity\User;
+use App\Entity\Product;
+use App\Entity\EmailSender;
+use App\Entity\DBConnection;
+
 class Exchange
 {
+    /**
+     * @var User
+     */
     private $receiver;
+
+    /**
+     * @var Product
+     */
     private $product;
+
+    /**
+     * @var \DateTime
+     */
     private $startDate;
+
+    /**
+     * @var \DateTime
+     */
     private $endDate;
 
     public function __construct(User $receiver, Product $product, \DateTime $startDate, \DateTime $endDate)
@@ -24,7 +45,10 @@ class Exchange
     }
 
     public function save(){
-        return $this->product->isValid() && $this->receiver->isValid() && $this->startDate > new \DateTime('NOW')  && $this->endDate > $this->startDate;
+        $email = new EmailSender();
+        $email->sendEmail($this->receiver, "Message");
+
+        return $this->product->isValid() && $this->receiver->isValidEmail() && $this->startDate > new \DateTime('NOW')  && $this->endDate > $this->startDate;
     }
 
     /**
