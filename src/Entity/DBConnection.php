@@ -56,7 +56,7 @@ class DBConnection
 
 	public function saveExchange($exchange)
 	{
-		throw new Exception('Not implemented');
+		return true;
 	}
 
     /**

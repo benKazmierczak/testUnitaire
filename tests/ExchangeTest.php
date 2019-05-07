@@ -10,8 +10,14 @@ use PHPUnit\Framework\TestCase;
 use App\Entity\User;
 use App\Entity\Product;
 use App\Entity\Exchange;
+use App\Entity\EmailSender;
+use App\Entity\DBConnection;
 
 class ExchangeTest extends TestCase {
+
+    /**
+     * @var Exchange
+     */
     protected $exchange;
     private $majorAge = 18;
     //private $receiver;
@@ -68,5 +74,13 @@ class ExchangeTest extends TestCase {
     public function testIsReceiverIsMajor(){
         $this->exchange->getReceiver()->setAge(25);
         $this->assertEquals(true, $this->exchange->getReceiver()->getAge() >= $this->majorAge);
+    }
+
+    public function testMock()
+    {
+        $emailSender = $this->createMock(EmailSender::class);
+        $emailSender->expects($this->any())->method("sendEmail")->will($this->returnValue(true));
+        $databaseConnection = $this->createMock(DBConnection::class);
+        $databaseConnection->expects($this->any())->method("saveExchange")->will($this->returnValue(true));
     }
 }

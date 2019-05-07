@@ -17,7 +17,7 @@ class User {
     /**
      * @param int $age
      */
-    public function setAge(int $age): void
+    public function setAge(int $age)
     {
         $this->age = $age;
     }
@@ -25,7 +25,7 @@ class User {
     /**
      * @param string $prenom
      */
-    public function setPrenom(string $prenom): void
+    public function setPrenom(string $prenom)
     {
         $this->prenom = $prenom;
     }
@@ -33,7 +33,7 @@ class User {
     /**
      * @param string $nom
      */
-    public function setNom(string $nom): void
+    public function setNom(string $nom)
     {
         $this->nom = $nom;
     }
@@ -41,7 +41,7 @@ class User {
     /**
      * @param string $email
      */
-    public function setEmail(string $email): ?void
+    public function setEmail(string $email)
     {
         if(filter_var($email, FILTER_VALIDATE_EMAIL)) {
             $this->email = $email;
